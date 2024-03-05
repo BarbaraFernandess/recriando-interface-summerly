@@ -1,0 +1,196 @@
+@import "styles/variables.scss";
+
+:root{
+    margin: 0 auto;
+    padding: 0;
+
+}
+
+@keyframes appear{
+    0%{
+        transform: translateX(-100%);
+        background-color: white;
+        color: rgb(51, 51, 51);
+
+    }
+    100%{
+        transform: translateY(0);
+        background: linear-gradient(150deg, #8f26c9 14%, #e72fb6);
+    }
+}
+
+@keyframes balance{
+    0%{
+        transform: rotate(15deg)
+    }
+    100%{
+        transform:rotate(30deg)
+    }
+}
+
+main{
+    min-height: 100vh;
+    width: 100vw;
+    position: relative;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    background-color: $bg-primary;
+
+    .header-container{
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        width: 100%;
+        padding: 24px;     
+        max-width: 100%; 
+         
+        .menu-options{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+    
+            a{
+                font-weight: 500;
+                font-size: 16px;
+                cursor: pointer;
+
+                &:hover{
+                    color: $color-primary;
+                    transition: all 500ms;
+                }
+            }
+            
+        }
+
+        button{
+            border-radius: 24px;
+            border: none;
+            font-weight: bold;
+            font-size: 18px;
+            background-color: transparent;
+            overflow: hidden;
+            position: relative;
+
+            div{
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                gap: 8px;
+                cursor: pointer;
+                padding: 12px 24px;
+                border-radius: 24px;
+                border: none;
+                height: 100%;
+                width: 100%;
+            }
+            
+            .btn-face-white{
+                color: rgb(51, 51, 51);
+                background: white; 
+                z-index: 998;
+
+            }
+
+            .btn-face-purple{
+                color: white;
+                display: none;
+                z-index: 999;
+                position: absolute;
+                top: 0;
+            }
+
+            &:hover{
+    
+                .btn-face-purple{
+                    display: flex;
+                    animation: appear 200ms linear 100ms forwards;
+         
+                }
+            }
+        }
+
+    } 
+    .content-container{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+        flex-grow: 1;
+        width: 80%;
+        padding: 32px;
+
+        .heading-container{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            align-items: flex-end;
+            width: 60%;
+
+            :first-child{
+                align-self: flex-start;
+            }
+
+            h2{
+                font-size: 62px;
+                font-weight: 800;
+                
+                :first-of-type{
+                    align-items: flex-start;
+                }
+            }
+        }
+
+
+        .bubble{
+            background: rgb(51, 51, 51);
+            border-radius: 100%;
+            position: absolute;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            &.fire{
+                right: 20px;
+                transform: rotate(-20deg);
+                bottom: 30%;
+                font-size: 24px;
+                width: 50px;
+                height: 50px;
+                animation: balance 1000ms alternate 400ms infinite;
+            }
+
+            &.rocket{
+                top: 20%;
+                right: 100px;
+                font-size: 42px;
+                width: 80px;
+                height: 80px;
+                animation: balance 1000ms alternate 400ms infinite;
+            }
+
+            &.target{
+                left: 150px;
+                top: 10%;
+                font-size: 50px;
+                transform: rotate(30deg);
+                animation: balance 1000ms alternate 400ms infinite;
+                width: 120px;
+                height: 120px;
+            }
+
+            &.bag{
+                bottom: 20%;
+                left: 5%;
+                font-size: 32px;
+                transform: rotate(30deg);
+                animation: balance 1000ms alternate 400ms infinite;
+                width: 70px;
+                height: 70px;
+            }
+
+        }
+    }
+}
